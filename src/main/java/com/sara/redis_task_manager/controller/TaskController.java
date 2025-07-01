@@ -23,7 +23,7 @@ public class TaskController {
     @PostMapping
     public String submitTask(@RequestBody TaskRequest taskRequest) throws JsonProcessingException {
         String taskJson = objectMapper.writeValueAsString(taskRequest);
-        String queueName = "taskQueue: " + taskRequest.getType().toLowerCase();
+        String queueName = "taskQueue:" + taskRequest.getType().toLowerCase();
         redisQueueService.pushToQueue(queueName, taskJson);
         return "Task submitted successfully to queue: " + queueName;
     }

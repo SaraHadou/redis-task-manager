@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class RedisQueueService {
 
+    @Autowired
     private final StringRedisTemplate redisTemplate;
 
     public RedisQueueService(StringRedisTemplate redisTemplate) {
